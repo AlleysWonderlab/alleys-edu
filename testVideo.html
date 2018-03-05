@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="A demonstration of creating a Video.js 5.x component.">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="//vjs.zencdn.net/5.11/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/5.11/video.js"></script>
+</head>
+<body>
+    <div class="video-js-box"> 
+     <video  id="video_01" class="video-js vjs-default-skin" >
+         <source src = "http://techslides.com/demos/sample-videos/small.mp4" type = "video/mp4">
+     </video>
+
+     <script type="text/javascript" charset="utf-8"> 
+      var myPlayer =videojs("video_01",
+         {"controls":true, 
+         "autoplay":false, 
+         "preload":"auto",
+         "poster":"",
+         "loop":"false",
+         "width":600,
+         "height":400
+         });
+         
+
+//      myPlayer.currentTime(3); // 3 seconds into the video
+
+//      myPlayer.requestFullScreen();
+
+//      videojs("video_01").ready(function(){
+//       myPlayer.src({ type: "video/mp4", src: "http://techslides.com/demos/sample-videos/small.mp4" });
+//       });
+
+
+         
+         
+//      var whereYouAt = myPlayer.currentTime(); 
+//      var lengthOfVideo = myPlayer.duration();
+         
+//    var myComponent = videojs.getComponent('Component');    
+////         myComponent.el();
+//         myComponent.children();
+//         
+//    var myButton = myComponent.addChild('MyButton', {
+//      text: 'Press Me',
+//      buttonChildExample: {
+//        buttonChildOption: true
+//      }
+//    });
+//     
+         
+//         myPlayer.addChild('BigPlayButton');
+         
+         
+         
+         
+      var onPlay = function(){
+       console.info("on Play");
+      };
+
+      myPlayer.on("play",onPlay);
+         
+         
+         
+//      myPlayer.on('timeupdate', function update() {     
+//          var currentTime = this.currentTime();
+//          console.log(currentTime);  
+//          
+//          if(currentTime > 2.0){
+//            var prevTime = currentTime-2.0;
+//          }
+//          console.log(prevTime);
+//      });         
+
+         
+     function makePrev(){ //2초 이전으로
+       var currentTime = myPlayer.currentTime();
+         
+         if(currentTime > 2.0){
+            var prevTime = currentTime-2.0;
+          }
+         myPlayer.currentTime(prevTime);
+     }     
+         
+
+    function makeNext(){ //2초 이후로
+       var currentTime = myPlayer.currentTime();
+         
+         if(currentTime > 0){
+            var nextTime = currentTime+2.0;
+          }
+         myPlayer.currentTime(nextTime);
+     }  
+         
+         
+     </script>
+
+     <button id = "prev" onclick = "makePrev()">2초 전으로</button>
+     <button id = "prev" onclick = "makeNext()">2초 후로</button>
+        
+    
+        
+<!--
+        <div class="video-js">
+          <div class="vjs-button">Button</div>
+        </div>
+-->
+    </div> 
+    
+   
+
+    
+    
+  
+</body>
+
+</html>
